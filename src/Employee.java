@@ -3,12 +3,12 @@ public class Employee {
     //Поля
     private final String fio;
     private int department;
-    private int salary;
+    private double salary;
     private final int id;
     private static int counter = 1;
 
     //Конструктор
-    public Employee(String fio, int department, int salary) {
+    public Employee(String fio, int department, double salary) {
 
         this.fio = fio;
         this.department = department;
@@ -25,7 +25,7 @@ public class Employee {
         return department;
     }
 
-    public int getSalary() {
+    public double getSalary() {
         return salary;
     }
 
@@ -42,16 +42,47 @@ public class Employee {
         this.salary = salary;
     }
 
-    public static int getSum(Employee[] employees) {
-        int sum = 0;
+    public static double getSum(Employee[] employees) {
+        double sum = 0;
         for (Employee value : employees) {
             sum = sum + value.getSalary();
         }
         return sum;
     }
 
-    public static double averageSalary(Employee[] employees){
-        return Math.ceil((double) getSum(employees)/employees.length);
+    public static void getMaxPay(Employee[] employees) {
+
+        double maxSalary = employees[0].getSalary();
+        for (Employee employee : employees) {
+            if (maxSalary < employee.getSalary()) {
+                maxSalary = employee.getSalary();
+            }
+
+        }
+        for (Employee employee : employees) {
+            if (maxSalary == employee.getSalary()) {
+                System.out.println("Сотрудник с самой высокой зарплатой - " + employee.getFio());
+            }
+        }
+    }
+
+    public static void getMinPay(Employee[] employees) {
+        double minSalary = employees[0].getSalary();
+        for (Employee employee : employees) {
+            if (minSalary > employee.getSalary()) {
+                minSalary = employee.getSalary();
+            }
+
+        }
+        for (Employee employee : employees) {
+            if (minSalary == employee.getSalary()) {
+                System.out.println("Сотрудник с самой низкой зарплатой - " + employee.getFio());
+            }
+        }
+    }
+
+    public static double averageSalary(Employee[] employees) {
+        return Math.ceil(getSum(employees) / employees.length);
     }
 
     @Override
