@@ -42,49 +42,6 @@ public class Employee {
         this.salary = salary;
     }
 
-    public static double getSum(Employee[] employees) {
-        double sum = 0;
-        for (Employee value : employees) {
-            sum = sum + value.getSalary();
-        }
-        return sum;
-    }
-
-    public static void getMaxPay(Employee[] employees) {
-
-        double maxSalary = employees[0].getSalary();
-        for (Employee employee : employees) {
-            if (maxSalary < employee.getSalary()) {
-                maxSalary = employee.getSalary();
-            }
-
-        }
-        for (Employee employee : employees) {
-            if (maxSalary == employee.getSalary()) {
-                System.out.println("Сотрудник с самой высокой зарплатой - " + employee.getFio());
-            }
-        }
-    }
-
-    public static void getMinPay(Employee[] employees) {
-        double minSalary = employees[0].getSalary();
-        for (Employee employee : employees) {
-            if (minSalary > employee.getSalary()) {
-                minSalary = employee.getSalary();
-            }
-
-        }
-        for (Employee employee : employees) {
-            if (minSalary == employee.getSalary()) {
-                System.out.println("Сотрудник с самой низкой зарплатой - " + employee.getFio());
-            }
-        }
-    }
-
-    public static double averageSalary(Employee[] employees) {
-        return Math.ceil(getSum(employees) / employees.length);
-    }
-
     @Override
     public String toString() {
         return "| " + getId() + "| " + getFio() + "| " + getDepartment() + "| " + getSalary() + "|";
